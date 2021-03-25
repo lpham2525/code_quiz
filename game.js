@@ -27,7 +27,7 @@ const questions = [
     choice3: "It's used to store passwords",
     choice4: "It's used to store data in local storage",
     choice5: "It's used to list complex data sets with key-value pairs",
-    answer: 3
+    answer: 5
   },
   {
     question: 'In JavaScript, what is meant by "hoisting"?',
@@ -36,7 +36,7 @@ const questions = [
     choice3: "It's when a function is called before it is defined",
     choice4: "It's used to copy and paste variables into local storage",
     choice5: 'When a button is inside a form and a programmer wants to prevent the page from refreshing when the button is clicked',
-    answer: 2
+    answer: 3
   },
   {
     question: 'Which of the following statements is false?',
@@ -54,7 +54,7 @@ const questions = [
     choice3: "When a programmer needs a code editor to stop autofilling text as it's being typed",
     choice4: 'When a programmer wants a shortcut to writing ids and classes on a tag',
     choice5: 'When a button is inside a form and a programmer wants to prevent the page from refreshing when the button is clicked',
-    answer: 1
+    answer: 5
   }
 ]
 
@@ -92,7 +92,7 @@ choices.forEach(choice => {
     const selectedChoice = event.target
     const selectedAnswer = selectedChoice.dataset['number']
 
-    let classToApply = selectedAnswer === currentQuestion.answer ? 'correct' : 'incorrect'
+    const classToApply = selectedAnswer === currentQuestion.answer ? 'correct' : 'incorrect'
 
     if (classToApply === 'correct') {
       incrementScore(SCORE_POINTS)
