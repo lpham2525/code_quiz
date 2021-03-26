@@ -2,7 +2,7 @@ const question = document.querySelector('#question')
 const choices = Array.from(document.querySelectorAll('.choice-text'))
 const progressText = document.querySelector('#progressText')
 const scoreText = document.querySelector('#score')
-const ProgressBarFull = document.querySelector('#progressBarFull')
+const progressBarFull = document.querySelector('#progressBarFull')
 
 let currentQuestion = {}
 let acceptingAnswers = true
@@ -64,18 +64,18 @@ const MAX_QUESTIONS = 5
 const getNewQuestion = () => {
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem('mostRecentScore', score)
-    return window.location.assign('/end.html')
+    return window.location.assign('./end.html')
   }
   questionCounter++
   progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
-  ProgressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`
+  progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`
 
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
   currentQuestion = availableQuestions[questionsIndex]
   question.innerText = currentQuestion.question
 
   choices.forEach(choice => {
-    const number = choice.dataset['number']
+    const number = choice.dataset.number
     choice.innerText = currentQuestion['choice' + number]
   })
 
@@ -90,9 +90,9 @@ choices.forEach(choice => {
 
     acceptingAnswers = false
     const selectedChoice = event.target
-    const selectedAnswer = selectedChoice.dataset['number']
+    const selectedAnswer = selectedChoice.dataset.number
 
-    const classToApply = selectedAnswer === currentQuestion.answer ? 'correct' : 'incorrect'
+    const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
 
     if (classToApply === 'correct') {
       incrementScore(SCORE_POINTS)
