@@ -5,7 +5,7 @@ const mostRecentScore = document.querySelector('mostRecentScore')
 
 const highScore = JSON.parse(localStorage.getItem('highScores')) || []
 
-// const MAX_HIGH_SCORES = 5
+const MAX_HIGH_SCORES = 5
 
 finalScore.innerText = mostRecentScore
 
@@ -13,8 +13,9 @@ username.addEventListener('keyup', () => {
   saveScoreBtn.disabled = !username.value
 })
 
-const saveHighScore = event => {
-  event.preventDefault()
+const saveHighScore = e => {
+  e.preventDefault()
+
   const score = {
     score: mostRecentScore,
     name: username.value
@@ -31,5 +32,3 @@ const saveHighScore = event => {
   localStorage.setItem('highScores', JSON.stringify(highScore))
   window.location.assign('./highscores.html')
 }
-
-saveHighScore()

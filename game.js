@@ -84,6 +84,11 @@ const getNewQuestion = () => {
   acceptingAnswers = true
 }
 
+const incrementScore = num => {
+  score += num
+  scoreText.innerText = score
+}
+
 choices.forEach(choice => {
   choice.addEventListener('click', event => {
     if (!acceptingAnswers) return
@@ -106,11 +111,6 @@ choices.forEach(choice => {
     }, 1000)
   })
 })
-
-const incrementScore = num => {
-  score += num
-  scoreText.innerText = score
-}
 
 const startGame = () => {
   questionCounter = 0

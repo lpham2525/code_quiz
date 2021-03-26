@@ -1,5 +1,13 @@
-body{
+body {
   color: #fff;
+}
+
+#finalScore {
+  border: solid 5px gold;
+  margin-bottom: 2rem;
+  padding: 2rem; 
+  font-size: 4rem;
+  text-align: center;
 }
 
 #highScoresList {
@@ -7,7 +15,7 @@ body{
   margin-bottom: 4rem;
 }
 
-.high-score{
+.high-score {
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
 }
