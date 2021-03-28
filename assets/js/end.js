@@ -3,6 +3,7 @@ const saveScoreBtn = document.querySelector('#saveScoreBtn')
 const lastScore = document.querySelector('#lastScore')
 const mostRecentScore = localStorage.getItem('mostRecentScore')
 const highScores = JSON.parse(localStorage.getItem('highScores')) || []
+const clear = document.querySelector('#clear')
 
 const MAX_HIGH_SCORES = 5
 
@@ -31,3 +32,10 @@ const saveHighScore = event => {
   localStorage.setItem('highScores', JSON.stringify(highScores))
   window.location.assign('./highscores.html')
 }
+
+
+
+// const clearScores = (highScores) => {
+//   console.log('hi')
+//   localStorage.clear()
+// }

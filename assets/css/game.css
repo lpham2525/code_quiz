@@ -81,6 +81,10 @@ body {
   font-size: 1.5rem;
 }
 
+#question{
+  padding-bottom: 20px;
+}
+
 #quitGame{
   text-align: center;
   color: white;
