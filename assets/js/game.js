@@ -130,7 +130,7 @@ const clockTick = () => {
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
   time--
-  clock.textContent = ('Time left: ' + ` ${minutes} minutes, ${seconds} seconds`)
+  clock.textContent = ('TIME LEFT: ' + ` ${minutes} minutes , ${seconds} seconds`)
   // check if user ran out of time
   if (time <= 0) {
     document.getElementById('clock').innerHTML = 'Time is up!'
