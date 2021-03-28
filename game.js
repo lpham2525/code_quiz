@@ -114,7 +114,7 @@ choices.forEach(choice => {
     if (classToApply === 'correct') {
       incrementScore(SCORE_POINTS)
     } else if (classToApply === 'incorrect') {
-      time -= 2
+      time -= 10
     }
 
     selectedChoice.parentElement.classList.add(classToApply)
@@ -135,6 +135,7 @@ const clockTick = () => {
   if (time <= 0) {
     document.getElementById('clock').innerHTML = 'Time is up!'
     quizEnd()
+    return window.location.assign('./end.html')
   }
 }
 
