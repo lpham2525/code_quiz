@@ -1,8 +1,14 @@
 const question = document.querySelector('#question')
 const choices = Array.from(document.querySelectorAll('.choice-text'))
+const clock = document.getElementById('clock')
+let time = 90
+// const minutes = parseInt(60 / 60)
+// const seconds = parseInt(60 % 60)
 const progressText = document.querySelector('#progressText')
 const scoreText = document.querySelector('#score')
 const progressBarFull = document.querySelector('#progressBarFull')
+// const quizQuestions = document.querySelector('#quizQuestions')
+let timerId
 
 let currentQuestion = {}
 let acceptingAnswers = true
@@ -61,6 +67,12 @@ const questions = [
 const SCORE_POINTS = 1
 const MAX_QUESTIONS = 5
 
+const quizEnd = () => {
+  // stop timer
+  clearInterval(timerId)
+  clock.classList.add('hide')
+}
+
 const getNewQuestion = () => {
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem('mostRecentScore', score)
@@ -101,6 +113,8 @@ choices.forEach(choice => {
 
     if (classToApply === 'correct') {
       incrementScore(SCORE_POINTS)
+    } else if (classToApply === 'incorrect') {
+      time -= 2
     }
 
     selectedChoice.parentElement.classList.add(classToApply)
@@ -112,11 +126,26 @@ choices.forEach(choice => {
   })
 })
 
+const clockTick = () => {
+  const minutes = Math.floor(time / 60)
+  const seconds = time % 60
+  time--
+  clock.textContent = ('Time left: ' + ` ${minutes} minutes, ${seconds} seconds`)
+  // check if user ran out of time
+  if (time <= 0) {
+    document.getElementById('clock').innerHTML = 'Time is up!'
+    quizEnd()
+  }
+}
+
 const startGame = () => {
   questionCounter = 0
   score = 0
+  time = 90
   availableQuestions = [...questions]
+  clockTick()
   getNewQuestion()
+  timerId = setInterval(clockTick, 1000)
 }
 
 startGame()
